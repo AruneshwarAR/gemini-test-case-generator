@@ -46,7 +46,7 @@ This project demonstrates how to use Google's Gemini API to automatically genera
 streamlit run app.py
 ```
 
-### Example
+## Example
 
 **Input User Story:**
 
@@ -55,3 +55,5 @@ As a user, I want to be able to log in to the application with my username and p
 ```
 
 **Generated Test Cases:**
+
+![Generated Test Cases](images/screenshot3.png)
