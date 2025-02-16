@@ -35,9 +35,9 @@ This project demonstrates how to use Google's Gemini API to automatically genera
     ```bash
     pip install streamlit google-genai
     ```
-4.  Set the `GOOGLE_API_KEY` environment variable:
+4.  Set the `GOOGLE_API_KEY` environment variable by creating `.env` file:
     ```bash
-    export GOOGLE_API_KEY="your-actual-api-key"
+    GOOGLE_API_KEY="your-actual-api-key"
     ```
 
 ### Running the App
