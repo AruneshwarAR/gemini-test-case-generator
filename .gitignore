@@ -1,0 +1,4 @@
+tcGen/
+__pycache__/
+.env
+*.pyc
