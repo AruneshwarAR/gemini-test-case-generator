@@ -1,12 +1,15 @@
 import streamlit as st
 import os 
-from google import genai
-from google.genai import types
+from openai import OpenAI
 
 # os.environ.clear()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
-client = genai.Client(api_key=GOOGLE_API_KEY)
+client = OpenAI(
+api_key=os.getenv("GOOGLE_API_KEY")
+, # Replace with your Gemini API key
+base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
 
 MODEL_ID = "gemini-2.0-pro-exp-02-05"
 
@@ -34,8 +37,17 @@ if st.button("Generate Test Cases"):
                 {user_story}"""
             try:
 
-                response = client.models.generate_content(model=MODEL_ID, contents=prompt)
-                st.markdown(response.text)
+                response = client.chat.completions.create(
+                    model=MODEL_ID, 
+                    messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {
+                    "role": "user",
+                    "content": prompt
+                    }]
+                    # ,stream=True
+                    )
+                st.markdown(response.choices[0].message.content)
 
             except Exception as e:
                 st.error(f"An error occurred:{e}")
